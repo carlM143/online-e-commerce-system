@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" style="margin:0; padding:0;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You for Your Order</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 600px;
+      background: #ffffff;
+      margin: 40px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    .header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .content {
+      padding: 30px;
+    }
+    .content h2 {
+      color: #0d6efd;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .order-summary {
+      margin-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 15px 0;
+    }
+    .product {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .product img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 15px;
+      border: 1px solid #e2e8f0;
+    }
+    .product-details h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #111827;
+    }
+    .product-details p {
+      margin: 3px 0 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+    .total {
+      text-align: right;
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #059669;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #64748b;
+      background: #f1f5f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1>Thank You for Your Order!</h1>
+    </div>
+
+    <div class="content">
+      <h2>Hi [fullname,fallback=Valued Customer],</h2>
+      <p>We’re excited to let you know that we’ve received your order. Here’s a summary of what you purchased:</p>
+
+      <div class="order-summary">
+        <div class="product">
+          <img src="https://via.placeholder.com/80" alt="Product Image">
+          <div class="product-details">
+            <h3>[Product Name]</h3>
+            <p>Price: $[Price]</p>
+          </div>
+        </div>
+
+        <div class="total">
+          Total: $[Total]
+        </div>
+      </div>
+
+      <p>We’ll send you another email once your order is shipped. If you have any questions, feel free to reply to this email.</p>
+
+      <p>Thanks again for shopping with us! 💙</p>
+    </div>
+
+    <div class="footer">
+      <p>Mini E-Commerce © 2025</p>
+      <p><unsubscribe>Unsubscribe</unsubscribe> | <webversion>View in Browser</webversion></p>
+    </div>
+  </div>
+</body>
+</html>
