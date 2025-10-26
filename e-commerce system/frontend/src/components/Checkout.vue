@@ -41,15 +41,14 @@ const cartTotal = computed(() =>
   cart.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
 )
 
-// Place order to backend
 const placeOrder = async () => {
   try {
     loading.value = true
     const payload = {
-      email: email.value,
-      cart: cart.value,
-      total: cartTotal.value,
-    }
+    customer_email: email.value,  
+    items: cart.value, 
+    total: cartTotal.value,
+  }
 
     const res = await axios.post('http://localhost:8080/api/checkout', payload)
     message.value = res.data.message
@@ -64,6 +63,7 @@ const placeOrder = async () => {
     loading.value = false
   }
 }
+
 </script>
 
 <style scoped>

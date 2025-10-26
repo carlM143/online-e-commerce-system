@@ -10,4 +10,9 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = ['customer_email', 'items', 'total'];
+
+    protected $casts = [
+    'items' => 'array',
+  ];
 }
+

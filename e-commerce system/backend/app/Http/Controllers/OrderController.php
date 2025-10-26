@@ -2,34 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderSummaryMail;
+use Illuminate\Support\Facades\Storage;
+use App\Services\CampaignMonitorService;
+use Illuminate\Support\Facades\Http;
+use App\Mail\OrderConfirmationMail; // ✅ Add this import
+use App\Models\Order;
 
 class OrderController extends Controller
 {
+    protected $cm;
+
+    public function __construct(CampaignMonitorService $cm)
+    {
+        $this->cm = $cm;
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'email' => 'required|email',
-            'cart' => 'required|array',
+            'customer_email' => 'required|email',
+            'items' => 'required|array',
             'total' => 'required|numeric',
         ]);
 
-        // Create new order record
         $order = Order::create([
-            'customer_email' => $validated['email'],
-            'items' => json_encode($validated['cart']),
+            'customer_email' => $validated['customer_email'],
+            'items' => $validated['items'],
             'total' => $validated['total'],
         ]);
 
-        // Send email (Microservice 3)
-        Mail::to($validated['email'])->send(new OrderSummaryMail($order));
+        Mail::to($order->customer_email)->send(new OrderConfirmationMail($order));
 
         return response()->json([
-            'message' => '✅ Order placed successfully! Email sent.',
+            'message' => 'Order placed successfully!',
             'order' => $order
-        ], 201);
+        ]);
     }
 }

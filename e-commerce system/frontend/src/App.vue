@@ -12,10 +12,6 @@
           <i class="fas fa-shopping-cart"></i>
           <span v-if="cartCount > 0" class="cart-badge">{{ cartCount }}</span>
         </router-link>
-
-        <router-link to="/login" class="login-link">
-          <i class="fas fa-user"></i> Login
-        </router-link>
       </div>
     </header>
 
