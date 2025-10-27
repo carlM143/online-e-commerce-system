@@ -149,5 +149,6 @@ git push -u origin main
 
 
 Make sure the repository is Public on GitHub.
+for email testing, i use mailtrap
 
 Include this README.md file in the root directory.
